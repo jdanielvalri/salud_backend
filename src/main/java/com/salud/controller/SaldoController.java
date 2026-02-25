@@ -29,7 +29,6 @@ public class SaldoController {
     public ResponseEntity<String> getFechaEjecucionSaldo() throws ParseException {
         String fechaCadena = "00/00/0000";
         Parametro parametro = parametroService.getByCodigo("FECEJESALD");
-
         if(parametro!=null){
             fechaCadena = DateUtil.convetirFechaACadena(parametro.getValorFecha(),"dd/MM/yyyy");
         }

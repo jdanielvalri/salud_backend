@@ -29,6 +29,7 @@
     </scm>
     <properties>
         <java.version>21</java.version>
+        <maven.compiler.fork>true</maven.compiler.fork>
     </properties>
     <dependencies>
         <dependency>

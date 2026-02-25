@@ -21,5 +21,6 @@ public class GastoOtroRequest {
     private double monto;
     private String descripcion;
     private Date fecha;
+    private String flgFinanciado;
 
 }

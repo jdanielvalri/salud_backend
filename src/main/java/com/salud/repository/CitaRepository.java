@@ -24,7 +24,7 @@ public interface CitaRepository extends JpaRepository<Cita, Long> {
             "c.estado as estado, c.comentario as comentario, " +
             "case when c.estado = 'PEND' then 'Pendiente' when c.estado = 'COMP' then 'Completado' " +
             "else '' end as nombreEstado, " +
-            "(select sum(cg.monto) from CitaGasto cg where cg.idCita = c.id) as montoTotal " +
+            "COALESCE((select sum(cg.monto) from CitaGasto cg where cg.idCita = c.id),0.0) as montoTotal " +
             "from Cita c join Paciente pe on c.idPaciente = pe.id " +
             "join UsuarioPaciente up on up.idPaciente = pe.id " +
             "join Usuario u on u.id = up.idUsuario " +
@@ -80,7 +80,7 @@ public interface CitaRepository extends JpaRepository<Cita, Long> {
             "c.estado as estado, c.comentario as comentario, " +
             "case when c.estado = 'PEND' then 'Pendiente' when c.estado = 'COMP' then 'Completado' " +
             "else '' end as nombreEstado, " +
-            "(select sum(cg.monto) from CitaGasto cg where cg.idCita = c.id) as montoTotal " +
+            "COALESCE((select sum(cg.monto) from CitaGasto cg where cg.idCita = c.id),0.0) as montoTotal " +
             "from Cita c join Paciente pe on c.idPaciente = pe.id " +
             "join Especialidad e on c.idEspecialidad = e.id " +
             "join Medico m on c.idMedico = m.id " +

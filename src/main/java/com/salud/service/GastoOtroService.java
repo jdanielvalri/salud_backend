@@ -47,6 +47,7 @@ public class GastoOtroService {
             gastoOtro.setFecha(actualizado.getFecha());
             gastoOtro.setMonto(actualizado.getMonto());
             gastoOtro.setDescripcion(actualizado.getDescripcion());
+            gastoOtro.setFlgFinanciado(actualizado.getFlgFinanciado());
             gastoOtro.setUser_actualizacion(actualizado.getUser_actualizacion());
             gastoOtro.setFec_actualizacion(new Date());
 

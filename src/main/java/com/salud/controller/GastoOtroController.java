@@ -56,6 +56,7 @@ public class GastoOtroController {
         gastoOtro.setIdEspecialidad(gastoOtroRequest.getIdEspecialidad());
         gastoOtro.setFecha(gastoOtroRequest.getFecha());
         gastoOtro.setMonto(gastoOtroRequest.getMonto());
+        gastoOtro.setFlgFinanciado(gastoOtroRequest.getFlgFinanciado());
         gastoOtro.setDescripcion(gastoOtroRequest.getDescripcion());
         gastoOtro.setFec_creacion(new Date());
         gastoOtro.setUser_creacion(user);
@@ -78,6 +79,7 @@ public class GastoOtroController {
         gastoOtro.setFecha(gastoOtroRequest.getFecha());
         gastoOtro.setMonto(gastoOtroRequest.getMonto());
         gastoOtro.setDescripcion(gastoOtroRequest.getDescripcion());
+        gastoOtro.setFlgFinanciado(gastoOtroRequest.getFlgFinanciado());
         gastoOtro.setFec_actualizacion(new Date());
         gastoOtro.setUser_actualizacion(user);
 

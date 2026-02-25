@@ -13,6 +13,7 @@ public interface GastoOtroProjection {
     String getNombreEspecialidad();
     String getNombreCentro();
     Date getFecha();
+    String getFechaCadena();
     double getMontoTotal();
     double getMontoFinanciado();
     String getDescripcion();

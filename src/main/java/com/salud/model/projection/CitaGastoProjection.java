@@ -10,6 +10,7 @@ public interface CitaGastoProjection {
     Long getIdCentro();
     String getItem();
     Date getFecha();
+    String getFechaCadena();
     Integer getCantidad();
     double getMonto();
     String getNombreCentro();

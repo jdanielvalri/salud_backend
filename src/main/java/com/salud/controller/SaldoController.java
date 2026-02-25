@@ -1,7 +1,10 @@
 package com.salud.controller;
 
+import com.salud.model.entity.Parametro;
 import com.salud.service.FinanciamientoService;
+import com.salud.service.ParametroService;
 import com.salud.service.SaldoService;
+import com.salud.utilitario.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
 
 @RestController
 @RequestMapping("/api/saldo")
@@ -17,6 +21,20 @@ public class SaldoController {
 
     @Autowired
     private SaldoService saldoService;
+
+    @Autowired
+    private ParametroService parametroService;
+
+    @GetMapping("/getFechaEjecucionSaldo")
+    public ResponseEntity<String> getFechaEjecucionSaldo() throws ParseException {
+        String fechaCadena = "00/00/0000";
+        Parametro parametro = parametroService.getByCodigo("FECEJESALD");
+
+        if(parametro!=null){
+            fechaCadena = DateUtil.convetirFechaACadena(parametro.getValorFecha(),"dd/MM/yyyy");
+        }
+        return ResponseEntity.ok(fechaCadena);
+    }
 
     @GetMapping("/getSaldoActual")
     public ResponseEntity<BigDecimal> getSaldoActual() {

@@ -20,8 +20,8 @@ public interface CitaRepository extends JpaRepository<Cita, Long> {
             "c.idMedico as idMedico, c.idEspecialidad as idEspecialidad, " +
             "pe.nombre || ' ' || pe.apePaterno || ' ' || pe.apeMaterno as nombrePaciente, " +
             "e.nombre as nombreEspecialidad, m.nombre as nombreMedico,  " +
-            "ce.nombre as nombreCentro, c.fecha as fecha, c.hora as hora, " +
-            "c.estado as estado, c.comentario as comentario, " +
+            "ce.nombre as nombreCentro, c.fecha as fecha, to_char(c.fecha,'dd/MM/yyyy') as fechaCadena, " +
+            "c.hora as hora, c.estado as estado, c.comentario as comentario, " +
             "case when c.estado = 'PEND' then 'Pendiente' when c.estado = 'COMP' then 'Completado' " +
             "else '' end as nombreEstado, " +
             "COALESCE((select sum(cg.monto) from CitaGasto cg where cg.idCita = c.id),0.0) as montoTotal " +
@@ -51,6 +51,7 @@ public interface CitaRepository extends JpaRepository<Cita, Long> {
             "pe.nombre || ' ' || pe.apePaterno || ' ' || pe.apeMaterno as nombrePaciente, " +
             "e.nombre as nombreEspecialidad, " +
             "ce.nombre as nombreCentro, c.fecha as fecha, " +
+            "to_char(c.fecha,'dd/MM/yyyy') as fechaCadena, " +
             "c.comentario as descripcion, 'C' as tipo, " +
             "COALESCE((select sum(cg.monto) from CitaGasto cg where cg.idCita = c.id),0.0) as montoTotal, " +
             "COALESCE((select sum(cg.monto) from CitaGasto cg where cg.idCita = c.id and cg.flgFinanciado = 'S'),0.0) as montoFinanciado  " +

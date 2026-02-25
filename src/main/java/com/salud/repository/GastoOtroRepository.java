@@ -19,6 +19,7 @@ public interface GastoOtroRepository extends JpaRepository<GastoOtro, Long> {
             "pe.nombre || ' ' || pe.apePaterno || ' ' || pe.apeMaterno as nombrePaciente, " +
             "e.nombre as nombreEspecialidad, " +
             "ce.nombre as nombreCentro, go.fecha as fecha, " +
+            "to_char(go.fecha,'dd/MM/yyyy') as fechaCadena, " +
             "go.monto as montoTotal, " +
             "case when go.flgFinanciado='S' then go.monto else 0.0 end as montoFinanciado, " +
             "go.descripcion as descripcion, 'O' as tipo " +

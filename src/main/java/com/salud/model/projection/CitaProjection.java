@@ -16,6 +16,7 @@ public interface CitaProjection {
     String getNombreCentro();
     String getNombreMedico();
     Date getFecha();
+    String getFechaCadena();
     LocalDateTime getHora();
     double getMontoTotal();
     String getEstado();

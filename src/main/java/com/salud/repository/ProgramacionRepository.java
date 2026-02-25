@@ -18,6 +18,8 @@ public interface ProgramacionRepository extends JpaRepository<Programacion, Long
             "p.idPaciente as idPaciente, " +
             "p.fechaDesde as fechaDesde, " +
             "p.fechaHasta as fechaHasta, " +
+            "to_char(p.fechaDesde, 'dd/MM/yyyy') as fechaDesdeCadena, " +
+            "to_char(p.fechaHasta, 'dd/MM/yyyy') as fechaHastaCadena, " +
             "pe.nombre || ' ' || pe.apePaterno || ' ' || pe.apeMaterno as nombrePaciente "  +
             "FROM Programacion p join Paciente pe " +
             "on p.idPaciente = pe.id " +

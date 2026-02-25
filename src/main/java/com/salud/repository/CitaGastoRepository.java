@@ -19,7 +19,9 @@ public interface CitaGastoRepository extends JpaRepository<CitaGasto, Long> {
 
     @Query("select cg.id as id, cg.idCita as idCita, " +
             "cg.item as item, cg.idCentro as idCentro, " +
-            "ce.nombre as nombreCentro, cg.fecha as fecha, cg.cantidad as cantidad, " +
+            "ce.nombre as nombreCentro, cg.fecha as fecha, " +
+            "to_char(cg.fecha,'dd/MM/yyyy') as fechaCadena, " +
+            "cg.cantidad as cantidad, " +
             "cg.monto as monto, cg.flgFinanciado as flgFinanciado " +
             "from CitaGasto cg join Centro ce on cg.idCentro = ce.id " +
             "where cg.idCita = :idcita")

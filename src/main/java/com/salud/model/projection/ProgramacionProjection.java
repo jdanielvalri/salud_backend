@@ -8,5 +8,7 @@ public interface ProgramacionProjection {
     Long getIdPaciente();
     Date getFechaDesde();
     Date getFechaHasta();
+    String getFechaDesdeCadena();
+    String getFechaHastaCadena();
     String getNombrePaciente();
 }

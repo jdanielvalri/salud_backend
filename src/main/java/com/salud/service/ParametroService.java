@@ -19,4 +19,8 @@ public class ParametroService {
         return parametroRepository.getByCodigo(codigo);
     }
 
+    public Parametro getById(Long id){
+        return parametroRepository.findById(id).orElse(null);
+    }
+
 }

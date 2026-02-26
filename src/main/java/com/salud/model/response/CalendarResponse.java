@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 public class CalendarResponse {
     private String id;
     private String title;
+    private String descripcion;
     private String date;
     private String start;
     private String end;

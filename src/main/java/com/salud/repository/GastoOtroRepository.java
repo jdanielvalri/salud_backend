@@ -32,7 +32,8 @@ public interface GastoOtroRepository extends JpaRepository<GastoOtro, Long> {
             "(to_char(go.fecha,'YYYYMMDD') >= to_char(cast(:desde as date),'YYYYMMDD') and " +
             "to_char(go.fecha,'YYYYMMDD') <= to_char(cast(:hasta as date),'YYYYMMDD')) and " +
             "(go.idPaciente = :idpaciente or :idpaciente is null) and " +
-            "(go.idEspecialidad = :idespecialidad or :idespecialidad is null)")
+            "(go.idEspecialidad = :idespecialidad or :idespecialidad is null) " +
+            "order by go.fecha desc")
     List<GastoOtroProjection> findByFiltros(@Param("usuario") String usuario,
                                             @Param("desde") Date desde,
                                             @Param("hasta") Date hasta,

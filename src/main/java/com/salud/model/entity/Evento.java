@@ -17,6 +17,7 @@ public class Evento {
     private Long id;
 
     private String titulo;
+    private String descripcion;
     private Date desde;
     private Date hasta;
     private LocalDateTime hora;

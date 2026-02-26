@@ -33,7 +33,8 @@ public interface FinanciamientoRepository extends JpaRepository<Financiamiento, 
             "FROM Financiamiento f " +
             "where " +
             "(f.anio = :anio or :anio is null) and " +
-            "(f.mes = :mes or :mes = '00')")
+            "(f.mes = :mes or :mes = '00') " +
+            "order by f.anio desc, f.mes desc ")
     List<FinanciamientoProjection> findByFiltros(@Param("anio") Integer anio,
                                                  @Param("mes") String mes);
 

@@ -66,6 +66,7 @@ public class CalendarController {
             CalendarResponse evenAcom = new CalendarResponse();
             evenAcom.setId(evento.getId().toString());
             evenAcom.setTitle(evento.getTitulo());
+            evenAcom.setDescripcion(evento.getDescripcion());
             evenAcom.setStart(DateUtil.convetirFechaACadena(evento.getDesde(), "YYYY-MM-dd"));
             evenAcom.setEnd(DateUtil.convetirFechaACadena(evento.getHasta(), "YYYY-MM-dd"));
             evenAcom.setBackgroundColor("green");

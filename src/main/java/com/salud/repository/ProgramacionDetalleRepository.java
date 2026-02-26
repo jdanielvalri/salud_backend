@@ -13,5 +13,5 @@ import java.util.List;
 @Repository
 public interface ProgramacionDetalleRepository extends JpaRepository<ProgramacionDetalle, Long> {
 
-    List<ProgramacionDetalle> getByIdProgramacion(Long idProgramacion);
+    List<ProgramacionDetalle> getByIdProgramacionOrderByOrdenAsc(Long idProgramacion);
 }

@@ -23,7 +23,7 @@ public class ProgramacionDetalleService {
     }
 
     public List<ProgramacionDetalle> getByIdProgramacion(Long idProgramacion){
-        return programacionDetalleRepository.getByIdProgramacion(idProgramacion);
+        return programacionDetalleRepository.getByIdProgramacionOrderByOrdenAsc(idProgramacion);
     }
 
     @Transactional

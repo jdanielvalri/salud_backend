@@ -37,7 +37,8 @@ public interface CitaRepository extends JpaRepository<Cita, Long> {
             "(c.idPaciente = :idpaciente or :idpaciente is null) and " +
             "(c.idEspecialidad = :idespecialidad or :idespecialidad is null) and " +
             "(c.idMedico = :idmedico or :idmedico is null) and " +
-            "(c.estado = :estado or :estado is null)")
+            "(c.estado = :estado or :estado is null) " +
+            "order by c.fecha desc")
     List<CitaProjection> findByFiltros(@Param("usuario") String usuario,
                                        @Param("desde") Date desde,
                                        @Param("hasta") Date hasta,
@@ -65,7 +66,8 @@ public interface CitaRepository extends JpaRepository<Cita, Long> {
             "(to_char(c.fecha,'YYYYMMDD') >= to_char(cast(:desde as date),'YYYYMMDD') and " +
             "to_char(c.fecha,'YYYYMMDD') <= to_char(cast(:hasta as date),'YYYYMMDD')) and " +
             "(c.idPaciente = :idpaciente or :idpaciente is null) and " +
-            "(c.idEspecialidad = :idespecialidad or :idespecialidad is null)")
+            "(c.idEspecialidad = :idespecialidad or :idespecialidad is null) " +
+            "order by c.fecha desc")
     List<GastoOtroProjection> findByFiltrosGastoOtro(@Param("usuario") String usuario,
                                                            @Param("desde") Date desde,
                                                            @Param("hasta") Date hasta,
@@ -78,6 +80,7 @@ public interface CitaRepository extends JpaRepository<Cita, Long> {
             "pe.nombre || ' ' || pe.apePaterno || ' ' || pe.apeMaterno as nombrePaciente, " +
             "e.nombre as nombreEspecialidad, m.nombre as nombreMedico,  " +
             "ce.nombre as nombreCentro, c.fecha as fecha, c.hora as hora, " +
+            "to_char(c.fecha,'dd/MM/yyyy') as fechaCadena, " +
             "c.estado as estado, c.comentario as comentario, " +
             "case when c.estado = 'PEND' then 'Pendiente' when c.estado = 'COMP' then 'Completado' " +
             "else '' end as nombreEstado, " +

@@ -67,6 +67,8 @@ public interface CitaRepository extends JpaRepository<Cita, Long> {
             "to_char(c.fecha,'YYYYMMDD') <= to_char(cast(:hasta as date),'YYYYMMDD')) and " +
             "(c.idPaciente = :idpaciente or :idpaciente is null) and " +
             "(c.idEspecialidad = :idespecialidad or :idespecialidad is null) " +
+            "and to_char(c.fecha,'YYYYMMDD') >= (select to_char(par.valorFecha,'YYYYMMDD') " +
+            "from Parametro par where par.codigo = 'FECEJESALD') " +
             "order by c.fecha desc")
     List<GastoOtroProjection> findByFiltrosGastoOtro(@Param("usuario") String usuario,
                                                            @Param("desde") Date desde,

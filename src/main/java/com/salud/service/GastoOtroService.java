@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class GastoOtroService {
@@ -73,6 +74,9 @@ public class GastoOtroService {
         if("C".equals(tipo) || "T".equals(tipo)){ //gastos cita
             datos.addAll(citaRepository.findByFiltrosGastoOtro(usuario,desde,hasta,
                     idPaciente,idEspecialidad));
+            datos = datos.stream()
+                    .filter(gasto -> gasto.getMontoFinanciado()>0)
+                    .collect(Collectors.toList());
         }
         if("O".equals(tipo) || "T".equals(tipo)){ //gastos cita
             datos.addAll(gastoOtroRepository.findByFiltros(usuario,desde,hasta,
